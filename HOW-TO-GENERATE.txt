@@ -1,0 +1,161 @@
+================================================================================
+  GREAT GUMS — HOW TO GENERATE A NEW LANDING PAGE
+================================================================================
+
+
+STEP 1 — CREATE A BRIEF FILE
+──────────────────────────────────────────────────────────────────────────────
+Create a new file in the /briefs/ folder named after your page slug.
+
+  File: briefs/your-page-name.json
+
+Slug rules: lowercase, hyphens only, no spaces
+  ✅ whitening-women
+  ✅ gum-disease-seniors
+  ❌ Whitening Women
+  ❌ whitening_women
+
+
+STEP 2 — FILL IN THE BRIEF
+──────────────────────────────────────────────────────────────────────────────
+Copy and fill in this template:
+
+{
+  "slug": "your-page-name",
+  "headline": "The big emotional headline for the hero",
+  "subheadline": "One line that explains the product and its key differentiator",
+  "cta": "YOUR CTA BUTTON TEXT IN ALL CAPS",
+  "audience": "describe who this ad is targeting (age, concern, mindset)",
+  "adAngle": "the core pain point or hook this page leads with",
+  "heroStyle": "dramatic OR bright OR clinical OR minimal",
+  "colorScheme": "dark and intense OR light and clinical OR warm and trustworthy",
+  "testimonials": [
+    { "name": "First Last", "quote": "Their exact testimonial here.", "role": "Verified Buyer" },
+    { "name": "First Last", "quote": "Another testimonial here.", "role": "Verified Buyer" },
+    { "name": "First Last", "quote": "A third testimonial here.", "role": "Verified Buyer" }
+  ]
+}
+
+
+FIELD GUIDE
+──────────────────────────────────────────────────────────────────────────────
+slug          → matches the filename and the URL (/lp/your-page-name)
+headline      → the big hero headline — emotional, problem-focused
+subheadline   → 1 sentence, mentions BIOELECTRIC and the core benefit
+cta           → all caps button text (e.g. "GET GREAT GUMS NOW", "START HEALING TODAY")
+audience      → who is this for? (e.g. "women 40+ worried about receding gums")
+adAngle       → what pain point or angle is this ad running on?
+               (e.g. "fear of tooth loss", "embarrassment about bleeding gums")
+heroStyle     → tells Claude what image mood to pick:
+               dramatic = dark, intense, macro
+               bright   = clean, confident, results-focused
+               clinical = white/grey, medical feel
+               minimal  = simple, elegant
+colorScheme   → overall page feel — influences copy tone and image selection
+testimonials  → 2-3 real quotes from customers. Longer = better.
+
+
+STEP 3 — RUN THE GENERATOR
+──────────────────────────────────────────────────────────────────────────────
+Open a terminal in the great-gums-engine folder and run:
+
+  npx tsx generate.ts your-page-name
+
+Example:
+  npx tsx generate.ts whitening-women
+
+This will:
+  1. Read your brief from briefs/your-page-name.json
+  2. Pick the best matching image from assets/images.json
+  3. Call the Claude API and stream the page to your terminal
+  4. Save the finished page to app/lp/your-page-name/page.tsx
+
+
+STEP 4 — PREVIEW IT LOCALLY
+──────────────────────────────────────────────────────────────────────────────
+  npm run dev
+
+Then open: http://localhost:3000/lp/your-page-name
+
+
+STEP 5 — PUSH TO VERCEL
+──────────────────────────────────────────────────────────────────────────────
+  git add app/lp/your-page-name/page.tsx
+  git commit -m "Add landing page: your-page-name"
+  git push
+
+Vercel auto-deploys on push. Page will be live at:
+  https://your-vercel-domain.com/lp/your-page-name
+
+
+================================================================================
+  EXAMPLE BRIEF — whitening-women
+================================================================================
+
+{
+  "slug": "whitening-women",
+  "headline": "Your Smile Is the First Thing People Notice",
+  "subheadline": "The world's ONLY bioelectric toothbrush that whitens and heals at the same time",
+  "cta": "GET MY BRIGHTER SMILE",
+  "audience": "women 30-50 who want whiter teeth without damaging sensitivity",
+  "adAngle": "embarrassment: yellow teeth and sensitivity making you hide your smile",
+  "heroStyle": "bright",
+  "colorScheme": "light and clean",
+  "testimonials": [
+    { "name": "Lisa M.", "quote": "I stopped hiding my smile in photos. My teeth are noticeably whiter and my gums feel healthier than ever.", "role": "Verified Buyer" },
+    { "name": "Karen T.", "quote": "Finally something that whitens without the sensitivity. I used to dread whitening strips.", "role": "Verified Buyer" },
+    { "name": "Amy B.", "quote": "My dentist asked what I was doing differently. That was all the proof I needed.", "role": "Verified Buyer" }
+  ]
+}
+
+
+================================================================================
+  ADDING IMAGES (OPTIONAL)
+================================================================================
+
+Images make the page look better. Without them, pages use a gradient background.
+
+To add images:
+  1. Drop the photo into the right folder under assets/images/
+       assets/images/heroes/      ← hero background photos (dramatic, dark)
+       assets/images/lifestyle/   ← people brushing, smiling (natural, real)
+       assets/images/products/    ← product shots (clean white background)
+       assets/images/editorial/   ← high contrast B&W (for pain sections)
+       assets/images/abstract/    ← artistic/creative shots
+
+  2. Register it in assets/images.json like this:
+       {
+         "file": "heroes/my-photo.jpg",
+         "tags": ["dramatic", "dark-background", "macro"],
+         "mood": "intense",
+         "style": "hero",
+         "bestFor": ["gum disease angle", "fear-based ads"]
+       }
+
+  3. Copy the image to public/images/ so Next.js can serve it:
+       public/images/heroes/my-photo.jpg
+
+The generator will automatically pick the best image for each brief.
+
+
+================================================================================
+  TROUBLESHOOTING
+================================================================================
+
+"Cannot find brief"
+  → Check that your file is named exactly: briefs/your-slug.json
+  → The slug in the filename must match the slug field inside the JSON
+
+"ANTHROPIC_API_KEY not set"
+  → Make sure .env.local exists and contains:
+    ANTHROPIC_API_KEY=sk-ant-...
+
+"Page looks unstyled"
+  → Run: npm run dev (not just opening the .tsx file directly)
+
+"Image not showing"
+  → Copy the image to public/images/[category]/[filename]
+  → Next.js only serves files from the public/ folder
+
+
+================================================================================
