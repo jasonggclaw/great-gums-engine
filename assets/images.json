@@ -1,0 +1,53 @@
+{
+  "images": [
+    {
+      "file": "heroes/toothbrush-macro.jpg",
+      "tags": ["dramatic", "dark-background", "macro", "blue-tinted"],
+      "mood": "intense",
+      "style": "hero",
+      "bestFor": ["gum disease angle", "fear-based ads", "dark hero sections"]
+    },
+    {
+      "file": "heroes/smile-close-up.jpg",
+      "tags": ["smile", "bright", "clinical", "white-background"],
+      "mood": "confident",
+      "style": "hero",
+      "bestFor": ["results-focused angle", "transformation", "bright hero sections"]
+    },
+    {
+      "file": "lifestyle/woman-brushing.jpg",
+      "tags": ["lifestyle", "natural-light", "authentic", "close-crop"],
+      "mood": "warm",
+      "style": "lifestyle",
+      "bestFor": ["trust building", "relatability", "female audience"]
+    },
+    {
+      "file": "lifestyle/man-mirror.jpg",
+      "tags": ["lifestyle", "natural-light", "authentic", "close-crop"],
+      "mood": "confident",
+      "style": "lifestyle",
+      "bestFor": ["trust building", "male audience", "morning routine"]
+    },
+    {
+      "file": "products/great-gums-brush.jpg",
+      "tags": ["product", "white-background", "studio", "clean"],
+      "mood": "clean",
+      "style": "product",
+      "bestFor": ["product intro", "clinical feel", "product showcase"]
+    },
+    {
+      "file": "editorial/gum-disease-bw.jpg",
+      "tags": ["editorial", "black-and-white", "high-contrast", "fear"],
+      "mood": "alarming",
+      "style": "editorial",
+      "bestFor": ["pain sections", "brutal truth section", "fear-based copy"]
+    },
+    {
+      "file": "abstract/brush-shadow.jpg",
+      "tags": ["abstract", "shadows", "artistic", "blue"],
+      "mood": "premium",
+      "style": "abstract",
+      "bestFor": ["section breaks", "premium feel", "sophisticated angles"]
+    }
+  ]
+}

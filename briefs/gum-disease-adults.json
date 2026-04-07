@@ -1,0 +1,27 @@
+{
+  "slug": "gum-disease-adults",
+  "headline": "Stop Losing Teeth to Gum Disease",
+  "subheadline": "The world's ONLY bioelectric toothbrush that heals while you brush",
+  "cta": "GET GREAT GUMS NOW",
+  "audience": "adults 35+ worried about gum disease",
+  "adAngle": "pain point: gum disease is the #1 cause of tooth loss, not cavities",
+  "heroStyle": "dramatic",
+  "colorScheme": "light and clinical",
+  "testimonials": [
+    {
+      "name": "Matt F.",
+      "quote": "My dentist even pointed out the improvement.",
+      "role": "Verified Buyer"
+    },
+    {
+      "name": "Sarah J.",
+      "quote": "Within days I noticed less irritation around my gums.",
+      "role": "Verified Buyer"
+    },
+    {
+      "name": "David R.",
+      "quote": "I was skeptical but after 30 days my gums stopped bleeding completely.",
+      "role": "Verified Buyer"
+    }
+  ]
+}
